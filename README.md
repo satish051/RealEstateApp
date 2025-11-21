@@ -2,7 +2,8 @@
 
 A full-stack Real Estate management system built with **ASP.NET Core MVC** and **Entity Framework Core**. This application provides a seamless experience for buyers to browse properties, calculate mortgages, and contact agents, while offering a robust Admin Dashboard for managing listings, leads, and agents.
 
-![Project Banner](https://via.placeholder.com/1200x400?text=Real+Estate+App+Screenshot+Here)
+![Project Banner](https://via.placehol![Uploading homepage.png…]()
+der.com/1200x400?text=Real+Estate+App+Screenshot+Here)
 *(Add a screenshot of your Homepage here)*
 
 ## 🚀 Tech Stack
