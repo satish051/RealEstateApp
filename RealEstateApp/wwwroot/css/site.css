@@ -1,0 +1,245 @@
+/* 1. Make the html and body take up full height */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* 2. Make the body a Flex Container (Vertical Column) */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Minimum height is the full viewport */
+}
+
+/* 3. Make the MAIN content grow to fill empty space */
+/* This pushes the footer down! */
+header, .container-main {
+    flex-shrink: 0;
+}
+
+main {
+    flex: 1 0 auto; /* This is the magic line */
+}
+
+footer {
+    flex-shrink: 0;
+    /* Ensure no fixed positioning is causing the overlap */
+    position: relative !important;
+    width: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* --- PREMIUM NAVBAR STYLES --- */
+.navbar-custom {
+    background: linear-gradient(90deg, #0f2027 0%, #203a43 50%, #2c5364 100%); /* Deep Blue Gradient */
+    padding: 0.8rem 1rem; /* More breathing room */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Soft shadow */
+}
+
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    font-size: 1.4rem !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    padding: 8px 15px !important; /* Bigger clickable area */
+}
+
+    .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.15); /* Subtle white highlight */
+        transform: translateY(-2px); /* Slight lift effect */
+        color: #fff !important;
+    }
+
+.btn-login {
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white !important;
+    border-radius: 20px;
+    padding: 5px 20px !important;
+    transition: 0.3s;
+}
+
+    .btn-login:hover {
+        background-color: white;
+        color: #1a252f !important; /* Dark Text on hover */
+    }
+
+.btn-register {
+    background-color: #e74c3c; /* Accent Red */
+    color: white !important;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 20px !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+    .btn-register:hover {
+        background-color: #c0392b;
+        transform: translateY(-2px);
+    }
+
+/* --- DASHBOARD STYLES --- */
+.dashboard-sidebar .list-group-item {
+    border: none;
+    padding: 15px 20px;
+    font-weight: 500;
+    color: #6c757d;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    transition: all 0.3s;
+}
+
+    .dashboard-sidebar .list-group-item:hover {
+        background-color: #e9ecef;
+        color: #2c3e50;
+        transform: translateX(5px);
+    }
+
+    .dashboard-sidebar .list-group-item.active {
+        background-color: #e7f1ff; /* Light Blue bg */
+        color: #0d6efd; /* Primary Blue text */
+        font-weight: bold;
+        border-left: 4px solid #0d6efd;
+    }
+
+.stat-card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+
+
+/* --- MODERN PREMIUM FOOTER --- */
+footer {
+    background: linear-gradient(180deg, #0f2027 0%, #203a43 100%);
+    color: #dbe4eb; /* Softer white for better reading */
+    padding-top: 3rem;
+    font-size: 0.95rem;
+    margin-top: auto;
+}
+
+    /* Headings with Gold Underline */
+    footer h5 {
+        color: #ffffff;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+
+        footer h5::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px; /* Small decorative line */
+            height: 3px;
+            background-color: #ffc107; /* Bootstrap Warning Yellow */
+            border-radius: 2px;
+        }
+
+    /* Links */
+    footer ul li {
+        margin-bottom: 12px; /* Better spacing between links */
+    }
+
+    footer a {
+        color: #b0c4de;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+        footer a:hover {
+            color: #ffc107; /* Turns Gold on hover */
+            transform: translateX(5px); /* Subtle slide right */
+        }
+
+/* Social Icons - Circular & Glass Effect */
+.social-icon {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    color: white;
+    margin-right: 8px;
+    transition: 0.3s;
+}
+
+    .social-icon:hover {
+        background: #ffc107;
+        color: #0f2027;
+        border-color: #ffc107;
+        transform: translateY(-3px);
+    }
+
+/* Copyright Bar - Darker to anchor the page */
+.footer-bottom {
+    background: #0a161b; /* Very dark teal/black */
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.85rem;
+    color: #8898aa;
+}
+
+/* --- NAVBAR DROPDOWN STYLES --- */
+.dropdown-menu {
+    border-radius: 10px; /* Round corners */
+    margin-top: 10px !important; /* Space from navbar */
+    overflow: hidden; /* Keeps corners round */
+    animation: fadeIn 0.3s; /* Fade effect */
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    font-weight: 500;
+    color: #555;
+    transition: 0.2s;
+}
+
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+        color: #000;
+        padding-left: 25px; /* Slide right effect on hover */
+    }
+
+/* Simple fade animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

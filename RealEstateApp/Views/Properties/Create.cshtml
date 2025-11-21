@@ -1,0 +1,104 @@
+﻿@model RealEstateApp.Models.Property
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+    
+<h4>Property</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label">Property Description</label>
+                <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <!-- replaced ImageUrl text input with file upload -->
+            <div class="form-group">
+                <label class="control-label">Property Image</label>
+                <div class="form-group mb-3">
+                    <label class="control-label">Upload Photos (Select Multiple)</label>
+                    <input type="file" name="imageFiles" class="form-control" multiple />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Bedrooms" class="control-label"></label>
+                <input asp-for="Bedrooms" class="form-control" />
+                <span asp-validation-for="Bedrooms" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Bathrooms" class="control-label"></label>
+                <input asp-for="Bathrooms" class="form-control" />
+                <span asp-validation-for="Bathrooms" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="control-label">Listing Type</label>
+                <select asp-for="IsForSale" class="form-select">
+                    <option value="true">For Sale</option>
+                    <option value="false">For Rent</option>
+                </select>
+                <span asp-validation-for="IsForSale" class="text-danger"></span>
+            </div>
+            <h4 class="mt-4">Agent Information</h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label asp-for="AgentName" class="control-label">Agent Name</label>
+                        <input asp-for="AgentName" class="form-control" />
+                        <span asp-validation-for="AgentName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label asp-for="AgentEmail" class="control-label">Agent Email</label>
+                        <input asp-for="AgentEmail" class="form-control" />
+                        <span asp-validation-for="AgentEmail" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label asp-for="AgentPhone" class="control-label">Agent Phone</label>
+                        <input asp-for="AgentPhone" class="form-control" />
+                        <span asp-validation-for="AgentPhone" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

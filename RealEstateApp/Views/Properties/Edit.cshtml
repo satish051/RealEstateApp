@@ -1,0 +1,145 @@
+﻿@model RealEstateApp.Models.Property
+
+@{
+    ViewData["Title"] = "Edit Property";
+}
+
+<div class="container mt-4 mb-5">
+    <h2>Edit Property</h2>
+    <hr />
+
+    <form asp-action="Edit" enctype="multipart/form-data">
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ImageUrl" />
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Title" class="control-label fw-bold"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label class="control-label fw-bold">Listing Type</label>
+                <select asp-for="IsForSale" class="form-select">
+                    <option value="true">For Sale</option>
+                    <option value="false">For Rent</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label asp-for="Price" class="control-label fw-bold"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Address" class="control-label fw-bold"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label asp-for="Bedrooms" class="control-label fw-bold"></label>
+                <input asp-for="Bedrooms" class="form-control" />
+                <span asp-validation-for="Bedrooms" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label asp-for="Bathrooms" class="control-label fw-bold"></label>
+                <input asp-for="Bathrooms" class="form-control" />
+                <span asp-validation-for="Bathrooms" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Description" class="control-label fw-bold"></label>
+            <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <hr />
+
+        <h5 class="mb-3 text-secondary">Agent Information</h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label asp-for="AgentName" class="control-label"></label>
+                <input asp-for="AgentName" class="form-control" />
+                <span asp-validation-for="AgentName" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label asp-for="AgentEmail" class="control-label"></label>
+                <input asp-for="AgentEmail" class="form-control" />
+                <span asp-validation-for="AgentEmail" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label asp-for="AgentPhone" class="control-label"></label>
+                <input asp-for="AgentPhone" class="form-control" />
+                <span asp-validation-for="AgentPhone" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <h5 class="mb-3 text-secondary">Photo Management</h5>
+
+        <div class="card mb-3 bg-light">
+            <div class="card-header fw-bold">Existing Gallery</div>
+            <div class="card-body">
+                <div class="row">
+                    @if (Model.Images != null && Model.Images.Any())
+                    {
+                        foreach (var img in Model.Images)
+                        {
+                            <div class="col-6 col-md-3 text-center mb-3">
+                                <img src="/images/@img.Url" class="img-thumbnail mb-2 shadow-sm"
+                                     style="height: 100px; width: 100%; object-fit: cover;">
+
+                                <button type="button"
+                                        class="btn btn-danger btn-sm w-100"
+                                        onclick="deleteImage(@img.Id)">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-12 text-center text-muted py-3">
+                            No gallery images uploaded yet.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="control-label fw-bold">Add New Photos</label>
+            <input type="file" name="imageFiles" class="form-control" multiple />
+        </div>
+
+        <div class="form-group d-flex gap-2">
+            <input type="submit" value="Save Changes" class="btn btn-primary btn-lg px-5" />
+            <a asp-action="Index" class="btn btn-secondary btn-lg">Cancel</a>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    function deleteImage(imageId) {
+        if (confirm('Are you sure you want to delete this photo?')) {
+            // Create a temporary form to send the delete request
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '/Properties/DeleteImage/' + imageId;
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+</script>

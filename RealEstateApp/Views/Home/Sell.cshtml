@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Sell Your Home";
+}
+
+<div class="position-relative text-center text-white mb-5" style="background: linear-gradient(rgba(15, 32, 39, 0.8), rgba(44, 83, 100, 0.8)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; padding: 100px 0;">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Sell Your Property with Confidence</h1>
+        <p class="lead mb-4">Get the best price for your home with Nepal's most trusted real estate agency.</p>
+        <a href="#contact-section" class="btn btn-warning btn-lg px-5 rounded-pill fw-bold">Get a Free Valuation</a>
+    </div>
+</div>
+
+<div class="container mb-5">
+
+    <div class="row text-center mb-5">
+        <div class="col-12 mb-4">
+            <h2 class="fw-bold">Why List With <span class="text-primary">RealEstateApp</span>?</h2>
+            <p class="text-muted w-75 mx-auto">We combine traditional market expertise with cutting-edge digital marketing to sell your home faster and for a better price.</p>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+                <div class="text-primary mb-3"><i class="bi bi-graph-up-arrow display-4"></i></div>
+                <h5 class="fw-bold">Maximized Exposure</h5>
+                <p class="text-muted small">Your property will be featured on our high-traffic website, social media channels, and premium email newsletters.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+                <div class="text-success mb-3"><i class="bi bi-wallet2 display-4"></i></div>
+                <h5 class="fw-bold">Top Market Value</h5>
+                <p class="text-muted small">Our expert agents use data-driven valuation tools to ensure you price your home correctly to attract serious buyers.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+                <div class="text-warning mb-3"><i class="bi bi-people-fill display-4"></i></div>
+                <h5 class="fw-bold">Dedicated Support</h5>
+                <p class="text-muted small">From listing to closing, our dedicated consultants handle the paperwork, negotiations, and legalities for you.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row align-items-center mt-5 mb-5">
+        <div class="col-lg-6">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80" class="img-fluid rounded shadow" alt="Meeting">
+        </div>
+        <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0">
+            <h2 class="fw-bold mb-4">How It Works</h2>
+            <ul class="list-unstyled">
+                <li class="mb-3 d-flex">
+                    <i class="bi bi-1-circle-fill text-primary fs-3 me-3"></i>
+                    <div>
+                        <h5 class="fw-bold">Consultation</h5>
+                        <p class="text-muted">Meet with our agent to discuss your goals and property value.</p>
+                    </div>
+                </li>
+                <li class="mb-3 d-flex">
+                    <i class="bi bi-2-circle-fill text-primary fs-3 me-3"></i>
+                    <div>
+                        <h5 class="fw-bold">Listing & Marketing</h5>
+                        <p class="text-muted">We take professional photos and list your home to thousands of buyers.</p>
+                    </div>
+                </li>
+                <li class="mb-3 d-flex">
+                    <i class="bi bi-3-circle-fill text-primary fs-3 me-3"></i>
+                    <div>
+                        <h5 class="fw-bold">Negotiation & Closing</h5>
+                        <p class="text-muted">We handle the offers and paperwork to ensure a smooth sale.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="contact-section" class="card bg-dark text-white rounded-3 overflow-hidden mt-5">
+        <div class="card-body p-5 text-center">
+            <h2 class="fw-bold mb-3">Ready to Start Selling?</h2>
+            <p class="lead mb-4 text-light">Contact our representatives today to schedule a free home valuation.</p>
+
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a asp-controller="Agents" asp-action="Index" class="btn btn-primary btn-lg px-4">
+                    <i class="bi bi-people-fill me-2"></i> Find an Agent
+                </a>
+                <a href="tel:+9779800000000" class="btn btn-outline-light btn-lg px-4">
+                    <i class="bi bi-telephone-fill me-2"></i> Call Us Now
+                </a>
+            </div>
+
+            <div class="mt-4 text-white-50 small">
+                Or visit our office: Kathmandu, Bagmati Province, Nepal
+            </div>
+        </div>
+    </div>
+
+</div>

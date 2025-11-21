@@ -1,0 +1,100 @@
+﻿@model IEnumerable<RealEstateApp.Models.Property>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+ 
+<div class="bg-dark text-white text-center py-5 mb-5" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
+    <div class="container py-5" style="background-color: rgba(0,0,0,0.6); border-radius: 10px;">
+        <h1 class="display-4 fw-bold">Find Your Dream Home</h1>
+        <p class="lead mb-4">Search properties for sale and for rent in your area.</p>
+
+        <form asp-controller="Properties" asp-action="Index" method="get" class="d-flex justify-content-center">
+            <div class="input-group w-75">
+                <input type="text" name="searchString" class="form-control form-control-lg" placeholder="Enter an address, city, or zip code...">
+                <button class="btn btn-primary btn-lg" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<form asp-controller="Properties" asp-action="Index" method="get" class="bg-white p-4 rounded shadow-sm" style="max-width: 900px; margin: 0 auto;">
+    <div class="row g-2">
+        <div class="col-md-4">
+            <input type="text" name="searchString" class="form-control form-control-lg" placeholder="City, Address...">
+        </div>
+
+        <div class="col-md-2">
+            <select name="propertyType" class="form-select form-select-lg">
+                <option value="all">All Types</option>
+                <option value="buy">For Sale</option>
+                <option value="rent">For Rent</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <input type="number" name="minPrice" class="form-control form-control-lg" placeholder="Min $">
+        </div>
+
+        <div class="col-md-2">
+            <input type="number" name="maxPrice" class="form-control form-control-lg" placeholder="Max $">
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary btn-lg w-100" type="submit">Search</button>
+        </div>
+    </div>
+</form>
+
+<div class="container">
+    <h2 class="text-center mb-4">Latest Listings</h2>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <img src="~/images/@item.ImageUrl" class="card-img-top" style="height: 200px; object-fit: cover;" alt="@item.Title">
+                    }
+                    else
+                    {
+                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="No Image">
+                    }
+
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@item.Address</h6>
+                        <p class="card-text text-success fw-bold fs-5">
+                            NRP @item.Price.ToString("N0")
+                        </p>
+                        <div class="d-flex justify-content-between text-secondary small">
+                            <div class="d-flex justify-content-between text-secondary small">
+                                <span>
+                                    <i class="bi bi-layout-sidebar"></i> @item.Bedrooms Beds
+                                </span>
+
+                                <span>
+                                    <i class="bi bi-droplet-fill"></i> @item.Bathrooms Baths
+                                </span>
+
+                                @* <span>@(item.IsForSale ? "For Sale" : "For Rent")</span> *@
+                            </div>
+                            <span>@(item.IsForSale ? "For Sale" : "For Rent")</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-white border-top-0">
+                        <a asp-controller="Properties" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary w-100">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-4 mb-5">
+        <a asp-controller="Properties" asp-action="Index" class="btn btn-lg btn-secondary">View All Properties</a>
+    </div>
+
+</div>

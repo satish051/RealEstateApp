@@ -1,0 +1,116 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Welcome Back";
+}
+
+<style>
+    /* Background Image */
+    .login-background {
+        background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        min-height: 85vh; /* Covers most of the screen */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    /* Dark Overlay so text is readable */
+    .login-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* 50% Dark tint */
+        backdrop-filter: blur(4px); /* Blur effect */
+    }
+
+    /* The Card Itself */
+    .login-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        padding: 3rem;
+        width: 100%;
+        max-width: 450px;
+        border-top: 5px solid #2c5364; /* Matches your Navbar */
+    }
+
+    .form-floating > label {
+        padding-left: 1.5rem;
+    }
+
+    .btn-login-submit {
+        background: linear-gradient(90deg, #203a43 0%, #2c5364 100%);
+        border: none;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+        .btn-login-submit:hover {
+            background: #0f2027;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+</style>
+
+<div class="login-background">
+    <div class="login-overlay"></div>
+
+    <div class="login-card animate__animated animate__fadeInUp">
+        <div class="text-center mb-4">
+            <div class="bg-light rounded-circle d-inline-flex p-3 mb-3 shadow-sm">
+                <i class="bi bi-person-circle fs-1 text-primary"></i>
+            </div>
+            <h2 class="fw-bold text-dark">Welcome Back</h2>
+            <p class="text-muted small">Please login to manage your properties</p>
+        </div>
+
+        <form id="account" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3 text-center"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control rounded-pill px-4" placeholder="name@example.com" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Email" class="text-muted">
+                    <i class="bi bi-envelope-fill me-2"></i> Email Address
+                </label>
+                <span asp-validation-for="Input.Email" class="text-danger small ms-3"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control rounded-pill px-4" placeholder="Password" autocomplete="current-password" aria-required="true" />
+                <label asp-for="Input.Password" class="text-muted">
+                    <i class="bi bi-lock-fill me-2"></i> Password
+                </label>
+                <span asp-validation-for="Input.Password" class="text-danger small ms-3"></span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="form-check ms-2">
+                    <input class="form-check-input" asp-for="Input.RememberMe" />
+                    <label class="form-check-label text-secondary small" asp-for="Input.RememberMe">
+                        Remember me
+                    </label>
+                </div>
+                <a id="forgot-password" asp-page="./ForgotPassword" class="text-decoration-none small fw-bold">Forgot Password?</a>
+            </div>
+
+            <button id="login-submit" type="submit" class="btn btn-login-submit btn-lg w-100 rounded-pill text-white mb-3">
+                LOGIN
+            </button>
+
+            <div class="text-center mt-4">
+                <span class="text-muted small">Don't have an account?</span>
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="fw-bold text-decoration-none">Register here</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

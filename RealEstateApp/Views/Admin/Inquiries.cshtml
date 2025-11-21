@@ -1,0 +1,91 @@
+﻿@model IEnumerable<RealEstateApp.Models.Inquiry>
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Example Real Estate - Admin Dashboard</h2>
+        <button class="btn btn-outline-primary">Export to Excel</button>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">Recent Inquiries</h5>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Date</th>
+                        <th>Property</th>
+                        <th>Lead Email</th>
+                        <th>Message</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Admin Dashboard</h2>
+
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-secondary">Export to Excel</button>
+
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="bi bi-box-arrow-right"></i> Logout
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.DateCreated.ToString("MMM dd, yyyy")</td>
+                            
+                            <td>
+                                @if(item.Property != null)
+                                {
+                                    <a asp-controller="Properties" asp-action="Details" asp-route-id="@item.PropertyId" target="_blank">
+                                        @item.Property.Title
+                                    </a>
+                                    <div class="small text-muted">Ref: #@item.PropertyId</div>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Property Deleted</span>
+                                }
+                            </td>
+                            
+                            <td>
+                                <a href="mailto:@item.UserEmail">@item.UserEmail</a>
+                            </td>
+                            
+                            <td>
+                                @(item.Message.Length > 50 ? item.Message.Substring(0, 50) + "..." : item.Message)
+                            </td>
+
+                            <td>
+                                <form asp-action="ArchiveInquiry" method="post">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to archive this inquiry?');">
+                                        <i class="bi bi-archive"></i> Archive
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            
+            @if (!Model.Any())
+            {
+                <div class="p-4 text-center text-muted">
+                    No inquiries found yet.
+                </div>
+            }
+        </div>
+    </div>
+</div>
