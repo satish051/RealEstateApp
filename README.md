@@ -35,7 +35,11 @@ A full-stack Real Estate management system built with **ASP.NET Core MVC** and *
 |:---:|:---:|
 | ![Home](https://via.placeholder.com/400x200?text=Home+Page) | ![Details](https://via.placeholder.com/400x200?text=Details+Page) |
 
-| Admin Dashboard | User Dashboard |
+| Admin Dashboard | User Dashboard |<img width="1855" height="904" alt="user dashboard" src="https://github.com/user-attachments/assets/feec324a-1e92-46b4-b827-a87d1b3345ac" />
+<img width="1854" height="989" alt="homepage" src="https://github.com/user-attachments/assets/5cf40a2b-0409-4938-966d-fb98046080b8" />
+<img width="1852" height="986" alt="detalispage" src="https://github.com/user-attachments/assets/02584a46-a6af-49af-857c-74602ccc1a7a" />
+<img width="1852" height="991" alt="admin dashboard" src="https://github.com/user-attachments/assets/448bc0da-8874-41d6-b150-8962c5a56cba" />
+
 |:---:|:---:|
 | ![Admin](https://via.placeholder.com/400x200?text=Admin+Dashboard) | ![User](https://via.placeholder.com/400x200?text=User+Dashboard) |
 
@@ -43,7 +47,7 @@ A full-stack Real Estate management system built with **ASP.NET Core MVC** and *
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/YOUR-USERNAME/RealEstateApp.git](https://github.com/YOUR-USERNAME/RealEstateApp.git)
+    git clone [https://github.com/satish051/RealEstateApp.git](https://github.com/YOUR-USERNAME/RealEstateApp.git)
     ```
 
 2.  **Configure Database**
