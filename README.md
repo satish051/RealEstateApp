@@ -1,10 +1,7 @@
 # 🏠 RealEstateApp - Premium Property Listing Platform
 
 A full-stack Real Estate management system built with **ASP.NET Core MVC** and **Entity Framework Core**. This application provides a seamless experience for buyers to browse properties, calculate mortgages, and contact agents, while offering a robust Admin Dashboard for managing listings, leads, and agents.
-
-![Project Banner](https://via.placehol![Uploading homepage.png…]()
-der.com/1200x400?text=Real+Estate+App+Screenshot+Here)
-*(Add a screenshot of your Homepage here)*
+<img width="1854" height="989" alt="homepage" src="https://github.com/user-attachments/assets/10fa5466-ff04-4f01-879b-b554c776c639" />
 
 ## 🚀 Tech Stack
 * **Framework:** ASP.NET Core 8.0 (MVC)
