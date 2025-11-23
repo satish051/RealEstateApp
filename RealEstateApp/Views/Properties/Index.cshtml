@@ -1,0 +1,116 @@
+﻿@model IEnumerable<RealEstateApp.Models.Property>
+
+@{
+    ViewData["Title"] = "Browse Properties";
+}
+
+<div class="bg-light p-4 rounded shadow-sm mb-5">
+    <form asp-controller="Properties" asp-action="Index" method="get">
+        <div class="row g-2">
+            <div class="col-md-4">
+                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control form-control-lg" placeholder="Search city, address...">
+            </div>
+            <div class="col-md-2">
+                <select name="propertyType" class="form-select form-select-lg">
+                    <option value="all" selected="@((string)ViewData["PropertyType"] == "all")">All Types</option>
+                    <option value="buy" selected="@((string)ViewData["PropertyType"] == "buy")">For Sale</option>
+                    <option value="rent" selected="@((string)ViewData["PropertyType"] == "rent")">For Rent</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="minPrice" value="@ViewData["MinPrice"]" class="form-control form-control-lg" placeholder="Min Price">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="maxPrice" value="@ViewData["MaxPrice"]" class="form-control form-control-lg" placeholder="Max Price">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary btn-lg w-100" type="submit">
+                    <i class="bi bi-search"></i> Search
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="d-flex justify-content-end mb-3">
+        <a asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Add New Property
+        </a>
+    </div>
+}
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5">
+        <div class="alert alert-warning d-inline-block px-5">
+            <h4>No properties match your search.</h4>
+            <a asp-action="Index" class="btn btn-outline-dark mt-2">Clear Filters</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div style="position: relative;">
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img src="~/images/@item.ImageUrl" class="card-img-top" style="height: 250px; object-fit: cover;" alt="@item.Title">
+                        }
+                        else
+                        {
+                            <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="No Image">
+                        }
+
+                        <div style="position: absolute; top: 10px; right: 10px;">
+                            @if (item.IsForSale)
+                            {
+                                <span class="badge bg-success fs-6">For Sale</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-info text-dark fs-6">For Rent</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title text-dark fw-bold">@item.Title</h5>
+                        <h4 class="text-primary fw-bold mb-2">NRP @item.Price.ToString("N0")</h4>
+                        <p class="card-text text-muted mb-3">
+                            <i class="bi bi-geo-alt-fill"></i> @item.Address
+                        </p>
+
+                        <div class="d-flex justify-content-start gap-3 text-secondary mb-3">
+                            <span class="d-flex align-items-center">
+                                <i class="bi bi-layout-sidebar me-1"></i> @item.Bedrooms Beds
+                            </span>
+                            <span class="d-flex align-items-center">
+                                <i class="bi bi-droplet-fill me-1"></i> @item.Bathrooms Baths
+                            </span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">
+                                View Details
+                            </a>
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <div class="btn-group" role="group">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

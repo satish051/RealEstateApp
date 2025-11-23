@@ -1,0 +1,125 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    .register-background {
+        background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        /* --- THE FIX STARTS HERE --- */
+        position: relative; /* Put it back in the normal layout flow */
+        width: 100%;
+        min-height: 85vh; /* Force it to be tall so it looks full-screen */
+        padding: 4rem 0; /* Add spacing top/bottom so card doesn't touch edges */
+        /* --------------------------- */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .register-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(3px);
+    }
+
+    .register-card {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        padding: 2.5rem;
+        width: 100%;
+        max-width: 500px;
+        border-top: 5px solid #e74c3c;
+    }
+
+    .form-floating > label {
+        padding-left: 1.5rem;
+    }
+
+    .btn-register-submit {
+        background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+        border: none;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: white;
+    }
+
+        .btn-register-submit:hover {
+            background: #a93226;
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+</style>
+
+<div class="register-background">
+    <div class="register-overlay"></div>
+
+    <div class="register-card animate__animated animate__fadeInUp">
+        <div class="text-center mb-4">
+            <div class="bg-light rounded-circle d-inline-flex p-3 mb-3 shadow-sm">
+                <i class="bi bi-person-plus-fill fs-1 text-danger"></i>
+            </div>
+            <h2 class="fw-bold text-dark">Create Account</h2>
+            <p class="text-muted small">Join us to find your dream home</p>
+        </div>
+
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3 text-center"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control rounded-pill px-4" placeholder="name@example.com" />
+                <label asp-for="Input.Email" class="text-muted"><i class="bi bi-envelope-fill me-2"></i> Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger small ms-3"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control rounded-pill px-4" placeholder="Password" />
+                <label asp-for="Input.Password" class="text-muted"><i class="bi bi-lock-fill me-2"></i> Password</label>
+                <span asp-validation-for="Input.Password" class="text-danger small ms-3"></span>
+            </div>
+
+            <div class="form-floating mb-4">
+                <input asp-for="Input.ConfirmPassword" class="form-control rounded-pill px-4" placeholder="Confirm Password" />
+                <label asp-for="Input.ConfirmPassword" class="text-muted"><i class="bi bi-check-circle-fill me-2"></i> Confirm</label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger small ms-3"></span>
+            </div>
+
+            <div class="form-check mb-3 text-start ms-2">
+                <input asp-for="Input.TermsAccepted" class="form-check-input" />
+                <label asp-for="Input.TermsAccepted" class="form-check-label text-muted small">
+                    I agree to the
+                    <a asp-controller="Home" asp-action="Terms" target="_blank" class="text-decoration-none fw-bold">
+                        Terms & Conditions
+                    </a>
+                </label>
+                <span asp-validation-for="Input.TermsAccepted" class="text-danger d-block small"></span>
+            </div>
+
+            <button id="registerSubmit" type="submit" class="btn btn-register-submit btn-lg w-100 rounded-pill mb-3">
+                REGISTER
+            </button>
+
+            <div class="text-center mt-3">
+                <span class="text-muted small">Already have an account?</span>
+                <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" class="fw-bold text-decoration-none text-danger">Login here</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

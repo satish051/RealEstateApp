@@ -1,0 +1,38 @@
+﻿@model RealEstateApp.Models.Agent
+
+@{
+    ViewData["Title"] = "Add New Agent";
+}
+
+<div class="container mt-5" style="max-width: 600px;">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white fw-bold">Add New Consultant</div>
+        <div class="card-body">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input asp-for="FullName" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Job Title / Bio</label>
+                    <input asp-for="Bio" class="form-control" placeholder="e.g. Senior Sales Consultant" />
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label">Phone</label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Profile Photo</label>
+                    <input type="file" name="imageFile" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-success w-100">Save Agent</button>
+            </form>
+        </div>
+    </div>
+</div>

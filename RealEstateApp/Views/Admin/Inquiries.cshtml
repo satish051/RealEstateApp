@@ -1,0 +1,214 @@
+﻿@model IEnumerable<RealEstateApp.Models.Inquiry>
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid mt-4 mb-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark">Dashboard Overview</h2>
+            <p class="text-muted">Welcome back, Admin. Here is what's happening today.</p>
+        </div>
+        <div>
+            <span class="badge bg-light text-dark border p-2">
+                <i class="bi bi-calendar-event me-1"></i> @DateTime.Now.ToString("dd MMM, yyyy")
+            </span>
+        </div>
+    </div>
+
+    <div class="row g-3 mb-5">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase opacity-75 small fw-bold">Total Properties</h6>
+                            <h2 class="fw-bold mb-0">@ViewBag.TotalProperties</h2>
+                        </div>
+                        <div class="fs-1 opacity-50"><i class="bi bi-building"></i></div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0 small opacity-75">
+                    <a asp-controller="Properties" asp-action="Index" class="text-white text-decoration-none stretched-link">View All Listings &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); color: #5a3a41;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase opacity-75 small fw-bold">Active Leads</h6>
+                            <h2 class="fw-bold mb-0">@ViewBag.ActiveInquiries</h2>
+                        </div>
+                        <div class="fs-1 opacity-50"><i class="bi bi-envelope-paper"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); color: #2c5364;">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase opacity-75 small fw-bold">Consultants</h6>
+                            <h2 class="fw-bold mb-0">@ViewBag.TotalAgents</h2>
+                        </div>
+                        <div class="fs-1 opacity-50"><i class="bi bi-people-fill"></i></div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0 small opacity-75">
+                    <a asp-controller="Agents" asp-action="Index" class="text-dark text-decoration-none stretched-link">Manage Team &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100 bg-dark text-white">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase opacity-75 small fw-bold">Market Value</h6>
+                            <h3 class="fw-bold mb-0">NRP @(((decimal)ViewBag.TotalValue).ToString("N0"))</h3>
+                        </div>
+                        <div class="fs-1 opacity-50"><i class="bi bi-wallet2"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 fw-bold"><i class="bi bi-inbox me-2 text-primary"></i>Recent Inquiries</h5>
+                    <a asp-action="ExportInquiries" class="btn btn-sm btn-outline-success">
+                        <i class="bi bi-file-earmark-spreadsheet me-1"></i> Export to Excel
+                    </a>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light text-secondary small text-uppercase">
+                                <tr>
+                                    <th class="ps-4">Client</th>
+                                    <th>Property Interest</th>
+                                    <th>Message Preview</th>
+                                    <th>Date</th>
+                                    <th class="text-end pe-4">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="ps-4">
+                                            <div class="fw-bold text-dark">@item.UserEmail</div>
+                                            <div class="small text-muted">New Lead</div>
+                                        </td>
+                                        <td>
+                                            @if (item.Property != null)
+                                            {
+                                                <div class="d-flex align-items-center">
+                                                    @if (!string.IsNullOrEmpty(item.Property.ImageUrl))
+                                                    {
+                                                        <img src="/images/@item.Property.ImageUrl" class="rounded me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                                    }
+                                                    <div>
+                                                        <a asp-controller="Properties" asp-action="Details" asp-route-id="@item.PropertyId" class="text-decoration-none fw-bold text-dark">
+                                                            @item.Property.Title
+                                                        </a>
+                                                        <div class="small text-muted">NRP @item.Property.Price.ToString("N0")</div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger">Property Deleted</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <div class="text-muted small text-truncate" style="max-width: 200px;">
+                                                "@item.Message"
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-light text-dark border">@item.DateCreated.ToString("MMM dd")</span>
+                                        </td>
+                                        <td class="text-end pe-4">
+                                            <div class="btn-group">
+                                                <a href="mailto:@item.UserEmail" class="btn btn-sm btn-outline-primary" title="Reply via Email">
+                                                    <i class="bi bi-reply-fill"></i>
+                                                </a>
+                                                <form asp-action="ArchiveInquiry" method="post" class="d-inline">
+                                                    <input type="hidden" name="id" value="@item.Id" />
+                                                    <button type="submit" class="btn btn-sm btn-outline-secondary" title="Archive" onclick="return confirm('Archive this message?');">
+                                                        <i class="bi bi-archive-fill"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        @if (!Model.Any())
+                        {
+                            <div class="text-center py-5">
+                                <i class="bi bi-inbox display-4 text-muted opacity-25"></i>
+                                <p class="text-muted mt-3">No active inquiries found.</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card shadow-sm border-0 rounded-3 mb-4">
+                <div class="card-header bg-white fw-bold py-3">Quick Actions</div>
+                <div class="list-group list-group-flush">
+                    <a asp-controller="Properties" asp-action="Create" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+                        <span class="bg-success text-white rounded p-2 me-3"><i class="bi bi-house-add"></i></span>
+                        <div>
+                            <div class="fw-bold">Add Property</div>
+                            <div class="small text-muted">List a new home</div>
+                        </div>
+                    </a>
+                    <a asp-controller="Agents" asp-action="Create" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+                        <span class="bg-warning text-dark rounded p-2 me-3"><i class="bi bi-person-plus-fill"></i></span>
+                        <div>
+                            <div class="fw-bold">Add Agent</div>
+                            <div class="small text-muted">New team member</div>
+                        </div>
+                    </a>
+                    <a asp-controller="Properties" asp-action="Index" class="list-group-item list-group-item-action py-3 d-flex align-items-center">
+                        <span class="bg-info text-white rounded p-2 me-3"><i class="bi bi-pencil-square"></i></span>
+                        <div>
+                            <div class="fw-bold">Manage Listings</div>
+                            <div class="small text-muted">Edit or Delete</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h6 class="fw-bold text-muted text-uppercase small">System Status</h6>
+                    <div class="d-flex align-items-center text-success mb-2">
+                        <i class="bi bi-circle-fill small me-2"></i> Database Active
+                    </div>
+                    <div class="d-flex align-items-center text-success">
+                        <i class="bi bi-circle-fill small me-2"></i> Email Service Active
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
