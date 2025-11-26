@@ -2,7 +2,8 @@
 
 A full-stack Real Estate management system built with **ASP.NET Core MVC** and **Entity Framework Core**. This application provides a seamless experience for buyers to browse properties, calculate mortgages, and contact agents, while offering a robust Admin Dashboard for managing listings, leads, and agents.
 
-![Project Banner](https://via.placeholder.com/1200x400?text=Real+Estate+App+Screenshot+Here)
+![Project Banner](https://via.plac<img width="1858" height="987" alt="Screenshot 2025-11-26 155402" src="https://github.com/user-attachments/assets/ea5d6968-a7ab-480c-9700-7a35dbe8ef0e" />
+eholder.com/1200x400?text=Real+Estate+App+Screenshot+Here)
 *(Add a screenshot of your Homepage here)*
 
 ## 🚀 Tech Stack
@@ -33,11 +34,15 @@ A full-stack Real Estate management system built with **ASP.NET Core MVC** and *
 
 | Home Page | Property Details |
 |:---:|:---:|
-| ![Home](https://via.placeholder.com/400x200?text=Home+Page) | ![Details](https://via.placeholder.com/400x200?text=Details+Page) |
+| ![Home](https://via.placeholder.c<img width="1857" height="992" alt="Screenshot 2025-11-26 155631" src="https://github.com/user-attachments/assets/02446a32-9776-418d-bafc-96805daf01ca" />
+om/400x200?text=Home+Page) | ![Details](https://via.placeholder.com/400x200?<img width="1851" height="985" alt="Screenshot 2025-11-26 155720" src="https://github.com/user-attachments/assets/108b47d6-484a-4b2c-8023-283d342e697c" />
+text=Details+Page) |
 
 | Admin Dashboard | User Dashboard |
 |:---:|:---:|
-| ![Admin](https://via.placeholder.com/400x200?text=Admin+Dashboard) | ![User](https://via.placeholder.com/400x200?text=User+Dashboard) |
+| ![Admin](https://via.placeholder<img width="1855" height="988" alt="Screenshot 2025-11-26 155915" src="https://github.com/user-attachments/assets/6247b0c4-f148-45b2-8262-a20691aa269e" />
+.com/400x200?text=Admin+Dashboard) | ![User](https://via.placeholder.com/400x<img width="1859" height="991" alt="Screenshot 2025-11-26 155949" src="https://github.com/user-attachments/assets/e20ad8a4-4d45-4775-a636-9446e7299397" />
+200?text=User+Dashboard) |
 
 ## 🛠️ Installation & Setup
 
