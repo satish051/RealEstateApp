@@ -32,15 +32,14 @@ A full-stack Real Estate management system built with **ASP.NET Core MVC** and *
 
 | Home Page | Property Details |
 |:---:|:---:|
-| ![Home]<img width="1857" height="992" alt="Screenshot 2025-11-26 155631" src="https://github.com/user-attachments/assets/02446a32-9776-418d-bafc-96805daf01ca" />
-| ![Details](https://via.placeholder.com/400x200?<img width="1851" height="985" alt="Screenshot 2025-11-26 155720" src="https://github.com/user-attachments/assets/108b47d6-484a-4b2c-8023-283d342e697c" />
+<img width="1857" height="992" alt="Screenshot 2025-11-26 155631" src="https://github.com/user-attachments/assets/02446a32-9776-418d-bafc-96805daf01ca" />
+<img width="1851" height="985" alt="Screenshot 2025-11-26 155720" src="https://github.com/user-attachments/assets/108b47d6-484a-4b2c-8023-283d342e697c" />
 
 
 | Admin Dashboard | User Dashboard |
 |:---:|:---:|
-| ![Admin]<img width="1855" height="988" alt="Screenshot 2025-11-26 155915" src="https://github.com/user-attachments/assets/6247b0c4-f148-45b2-8262-a20691aa269e" />
-| ![User]<img width="1859" height="991" alt="Screenshot 2025-11-26 155949" src="https://github.com/user-attachments/assets/e20ad8a4-4d45-4775-a636-9446e7299397" />
-
+<img width="1855" height="988" alt="Screenshot 2025-11-26 155915" src="https://github.com/user-attachments/assets/6247b0c4-f148-45b2-8262-a20691aa269e" />
+<img width="1859" height="991" alt="Screenshot 2025-11-26 155949" src="https://github.com/user-attachments/assets/e20ad8a4-4d45-4775-a636-9446e7299397" />
 
 ## 🛠️ Installation & Setup
 
