@@ -30,7 +30,7 @@ Project Banner <img width="1858" height="987" alt="Screenshot 2025-11-26 155402"
 
 ## 📸 Screenshots
 
-| Home Page | Property Details |
+| Home Page |
 |:---:|
 <img width="1857" height="992" alt="Screenshot 2025-11-26 155631" src="https://github.com/user-attachments/assets/02446a32-9776-418d-bafc-96805daf01ca" />
 
@@ -39,7 +39,7 @@ Project Banner <img width="1858" height="987" alt="Screenshot 2025-11-26 155402"
 <img width="1851" height="985" alt="Screenshot 2025-11-26 155720" src="https://github.com/user-attachments/assets/108b47d6-484a-4b2c-8023-283d342e697c" />
 
 
-| Admin Dashboard | User Dashboard |
+| Admin Dashboard |
 |:---:|
 <img width="1855" height="988" alt="Screenshot 2025-11-26 155915" src="https://github.com/user-attachments/assets/6247b0c4-f148-45b2-8262-a20691aa269e" />
 
